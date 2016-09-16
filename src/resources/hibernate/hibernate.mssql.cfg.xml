@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">
+            jdbc:sqlserver://;servername=localhost;port=1884;databaseName=SPYTNIK;instanceName=WORK_SQL
+        </property>
+        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="connection.username">admin</property>
+        <property name="connection.password">1234</property>
+        <!-- DB schema will be updated if needed -->
+        <!--
+        <property name="hbm2ddl.auto">validate</property>
+        -->
+        <mapping class="model.tableAccountDataEntity"/>
+        <mapping class="model.tableAccountEntity"/>
+        <mapping class="model.tableCarEntity"/>
+        <mapping class="model.tableCommentsEntity"/>
+        <mapping class="model.tableDetailEntity"/>
+        <mapping class="model.tableEmployeeEntity"/>
+        <mapping class="model.tableFirmAutoEntity"/>
+        <mapping class="model.tableOwnerEntity"/>
+        <mapping class="model.tableUsersEntity"/>
+        <mapping class="model.tableWorkEntity"/>
+
+    </session-factory>
+</hibernate-configuration>
