@@ -13,14 +13,14 @@ public class HibernateSessionFactory {
 
     public enum DBMS{
         MSSQL,
-        PostgreSQL,
+        //PostgreSQL,
         MYSQL;
 
         public String getConnectionString(){
             switch (this){
                 case MSSQL: return "hibernate/hibernate.mssql.cfg.xml";
-                case PostgreSQL: return "";
-                case MYSQL: return "";
+                //case PostgreSQL: return "";
+                case MYSQL: return "hibernate/hibernate.mysql.cfg.xml";
             }
             return null;
         }
