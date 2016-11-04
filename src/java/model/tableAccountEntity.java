@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by ildar on 23.06.2016.
  */
 @Entity
-@Table(name="Account", schema="dbo", catalog="SPYTNIK")
+@Table(name="Account", schema="dbo", catalog="sputnik")
 @Description(value = "Счет")
 public class tableAccountEntity {
 
@@ -69,7 +69,7 @@ public class tableAccountEntity {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 

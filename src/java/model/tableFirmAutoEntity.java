@@ -10,7 +10,7 @@ import java.util.Set;
  * Created by ildar on 23.06.2016.
  */
 @Entity
-@Table(name="Firm_auto", schema="dbo", catalog="SPYTNIK")
+@Table(name="Firm_auto", schema="dbo", catalog="sputnik")
 public class tableFirmAutoEntity {
 
     @Id

@@ -10,7 +10,7 @@ import java.util.Set;
  * Created by ildar on 23.06.2016.
  */
 @Entity
-@Table(name="Car", schema="dbo", catalog="SPYTNIK")
+@Table(name="Car", schema="dbo", catalog="sputnik")
 @Description(value = "Машины")
 public class tableCarEntity {
 
@@ -21,10 +21,10 @@ public class tableCarEntity {
     private Integer id;
 
 
-    @ManyToOne
-    @JoinColumn(name = "id_firm")
+    @Basic
+    @Column(name = "firm")
     @Description(value = "Фирма")
-    private tableFirmAutoEntity firm;
+    private String firm;
 
     @Basic
     @Column(name = "mark")
@@ -47,11 +47,11 @@ public class tableCarEntity {
         this.id = id;
     }
 
-    public tableFirmAutoEntity getFirm() {
+    public String getFirm() {
         return firm;
     }
 
-    public void setFirm(tableFirmAutoEntity firm) {
+    public void setFirm(String firm) {
         this.firm = firm;
     }
 
@@ -78,7 +78,7 @@ public class tableCarEntity {
         tableCarEntity that = (tableCarEntity) o;
 
         if (id != that.id) return false;
-        if (firm != that.firm) return false;
+        if (firm != null ? !firm.equals(that.firm) : that.firm != null) return false;
         if (mark != null ? !mark.equals(that.mark) : that.mark != null) return false;
         if (numberCar != null ? !numberCar.equals(that.numberCar) : that.numberCar != null) return false;
 

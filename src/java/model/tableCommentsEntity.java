@@ -10,7 +10,7 @@ import java.sql.Timestamp;
  */
 
 @Entity
-@Table(name = "Comments", schema = "dbo", catalog = "SPYTNIK")
+@Table(name = "Comments", schema = "dbo", catalog = "sputnik")
 @Description(value = "Комментарии")
 public class tableCommentsEntity {
 
@@ -19,11 +19,6 @@ public class tableCommentsEntity {
     @Column(name="id", nullable = false)
     @Description(value = "id")
     private Integer id;
-
-    @ManyToOne
-    @JoinColumn(name = "login")
-    @Description(value = "Логин")
-    private tableUsersEntity login;
 
     @Basic
     @Column(name = "data")
@@ -45,14 +40,6 @@ public class tableCommentsEntity {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public tableUsersEntity getLogin() {
-        return login;
-    }
-
-    public void setLogin(tableUsersEntity login) {
-        this.login = login;
     }
 
     public tableAccountDataEntity getAccountDataEntity() {
@@ -85,16 +72,15 @@ public class tableCommentsEntity {
 
         tableCommentsEntity that = (tableCommentsEntity) o;
 
-        if (login != null ? !login.equals(that.login) : that.login != null) return false;
+        if (id != that.id) return false;
         if (data != null ? !data.equals(that.data) : that.data != null) return false;
         if (text != null ? !text.equals(that.text) : that.text != null) return false;
-
+        if (accountDataEntity != null ? !accountDataEntity.equals(that.accountDataEntity) : that.accountDataEntity != null) return false;
         return true;
     }
 
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (data != null ? data.hashCode() : 0);
         result = 31 * result + (text != null ? text.hashCode() : 0);
         result = 31 * result + (accountDataEntity != null ? accountDataEntity.hashCode() : 0);

@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="Employee", schema="dbo", catalog="SPYTNIK")
+@Table(name="Employee", schema="dbo", catalog="sputnik")
 @Description(value = "Сотрудники")
 public class tableEmployeeEntity {
 

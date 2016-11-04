@@ -1,5 +1,6 @@
 package model;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.sun.org.glassfish.gmbal.Description;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.util.Set;
  * Created by ildar on 23.06.2016.
  */
 @Entity
-@Table(name = "Users", schema = "dbo", catalog = "SPYTNIK")
+@Table(name = "Users", schema="dbo", catalog = "sputnik")
 @Description(value = "Пользователи")
 public class tableUsersEntity implements Comparable<tableUsersEntity> {
 
@@ -43,7 +44,7 @@ public class tableUsersEntity implements Comparable<tableUsersEntity> {
     @Basic
     @Column(name = "isAdmin")
     @Description(value = "Админ?")
-    private boolean isAdmin;
+    private boolean admin;
 
     @Basic
     @Column(name = "dataRegistration")
@@ -55,8 +56,25 @@ public class tableUsersEntity implements Comparable<tableUsersEntity> {
     @Description(value = "Бан")
     private boolean locked;
 
+    @Basic
+    @Column(name = "location")
+    @Description(value = "Местоположение")
+    private String location;
+
+    @Basic
+    @Column(name = "phoneNumber")
+    @Description(value = "Номер телефона")
+    private String phoneNumber;
+
+    @Basic
+    @Column(name = "email")
+    @Description(value = "email")
+    private String email;
+
+    /*
     @OneToMany(mappedBy = "login")
-    private Set<tableCommentsEntity> commentsEntities = new HashSet<tableCommentsEntity>();
+    private Set<tableAccountDataEntity> accountDataEntities = new HashSet<>();
+    */
 
     public String getName() {
         return name;
@@ -99,11 +117,11 @@ public class tableUsersEntity implements Comparable<tableUsersEntity> {
     }
 
     public boolean isAdmin() {
-        return isAdmin;
+        return admin;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setAdmin(Boolean isAdmin) {
+        admin = isAdmin;
     }
 
     public Timestamp getDataRegistration() {
@@ -122,20 +140,47 @@ public class tableUsersEntity implements Comparable<tableUsersEntity> {
         this.locked = locked;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         tableUsersEntity that = (tableUsersEntity) o;
 
+        if (admin != that.admin) return false;
         if (locked != that.locked) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (surname != null ? !surname.equals(that.surname) : that.surname != null) return false;
         if (login != null ? !login.equals(that.login) : that.login != null) return false;
         if (passwordHash != null ? !passwordHash.equals(that.passwordHash) : that.passwordHash != null) return false;
         if (salt != null ? !salt.equals(that.salt) : that.salt != null) return false;
-        if (dataRegistration != null ? !dataRegistration.equals(that.dataRegistration) : that.dataRegistration != null)
-            return false;
+        if (dataRegistration != null ? !dataRegistration.equals(that.dataRegistration) : that.dataRegistration != null) return false;
+        if (location != null ? !location.equals(that.location) : that.location != null) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(that.phoneNumber) : that.phoneNumber != null) return false;
+        if (email != null ? !email.equals(that.email) : that.email != null) return false;
 
         return true;
     }
@@ -148,6 +193,10 @@ public class tableUsersEntity implements Comparable<tableUsersEntity> {
         result = 31 * result + (salt != null ? salt.hashCode() : 0);
         result = 31 * result + (dataRegistration != null ? dataRegistration.hashCode() : 0);
         result = 31 * result + (locked ? 1 : 0);
+        result = 31 * result + (admin ? 1 : 0);
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
 

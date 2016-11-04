@@ -9,7 +9,7 @@ import java.sql.Timestamp;
  * Created by ildar on 23.06.2016.
  */
 @Entity
-@Table(name="Account_data", schema="dbo", catalog="SPYTNIK")
+@Table(name="Account_data", schema="dbo", catalog="sputnik")
 @Description(value = "Списки")
 public class tableAccountDataEntity {
 
@@ -29,14 +29,19 @@ public class tableAccountDataEntity {
     private tableCarEntity car;
 
     @ManyToOne
-    @JoinColumn(name = "login_owner")
-    @Description(value = "Логин владельца")
-    private tableOwnerEntity loginOwner;
+    @JoinColumn(name = "login_user")
+    @Description(value = "Логин пользователя")
+    private tableUsersEntity loginUser;
+
+    @Basic
+    @Column(name = "confidentially")
+    @Description(value = "Приватность")
+    private boolean confidentially;
 
     @Basic
     @Column(name = "status_car")
     @Description(value = "Статус ремонта")
-    private Integer statusCar;
+    private String statusCar;
 
     @Basic
     @Column(name = "status_payment")
@@ -74,19 +79,19 @@ public class tableAccountDataEntity {
         this.car = idCar;
     }
 
-    public tableOwnerEntity getLoginOwner() {
-        return loginOwner;
+    public tableUsersEntity getLoginUser() {
+        return loginUser;
     }
 
-    public void setLoginOwner(tableOwnerEntity loginOwner) {
-        this.loginOwner = loginOwner;
+    public void setLoginUser(tableUsersEntity loginUser) {
+        this.loginUser = loginUser;
     }
 
-    public Integer getStatusCar() {
+    public String getStatusCar() {
         return statusCar;
     }
 
-    public void setStatusCar(Integer statusCar) {
+    public void setStatusCar(String statusCar) {
         this.statusCar = statusCar;
     }
 
@@ -98,6 +103,14 @@ public class tableAccountDataEntity {
         this.statusPayment = statusPayment;
     }
 
+    public boolean isConfidentially() {
+        return confidentially;
+    }
+
+    public void setConfidentially(boolean confidentially) {
+        this.confidentially = confidentially;
+    }
+
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -107,7 +120,8 @@ public class tableAccountDataEntity {
         if (id != that.id) return false;
         if (car != that.car) return false;
         if (date != null ? !date.equals(that.date) : that.date != null) return false;
-        if (loginOwner != null ? !loginOwner.equals(that.loginOwner) : that.loginOwner != null) return false;
+        if (loginUser != null ? !loginUser.equals(that.loginUser) : that.loginUser != null) return false;
+        if (confidentially != that.confidentially) return false;
         if (statusCar != null ? !statusCar.equals(that.statusCar) : that.statusCar != null) return false;
         if (statusPayment != that.statusPayment) return false;
 
@@ -118,7 +132,8 @@ public class tableAccountDataEntity {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (car != null ? car.hashCode() : 0);
-        result = 31 * result + (loginOwner != null ? loginOwner.hashCode() : 0);
+        result = 31 * result + (loginUser != null ? loginUser.hashCode() : 0);
+        result = 31 * result + (confidentially ? 1 : 0);
         result = 31 * result + (statusCar != null ? statusCar.hashCode() : 0);
         result = 31 * result + (statusPayment ? 1 : 0);
         return result;

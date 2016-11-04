@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by ildar on 23.06.2016.
  */
 @Entity
-@Table(name = "Owner", schema = "dbo", catalog = "SPYTNIK")
+@Table(name = "Owner", schema = "dbo", catalog = "sputnik")
 @Description(value = "Владельцы")
 public class tableOwnerEntity {
 

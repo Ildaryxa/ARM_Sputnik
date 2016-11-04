@@ -10,9 +10,9 @@ import java.util.Set;
  * Created by ildar on 23.06.2016.
  */
 @Entity
-@Table(name="Detail",schema="dbo", catalog="SPYTNIK")
+@Table(name="Detail",schema="dbo", catalog="sputnik")
 @Description(value = "Детали")
-public class tableDetailEntity {
+public class tableDetailEntity implements Comparable<tableDetailEntity>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -90,5 +90,10 @@ public class tableDetailEntity {
         result = 31 * result + (priceOfDetail != null ? priceOfDetail.hashCode() : 0);
         result = 31 * result + (unit != null ? unit.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public int compareTo(tableDetailEntity o) {
+        return getNameDetail().compareTo(o.getNameDetail());
     }
 }
