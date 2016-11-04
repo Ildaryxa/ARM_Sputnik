@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.url">
-            jdbc:sqlserver://;servername=localhost;port=1884;databaseName=SPYTNIK;instanceName=WORK_SQL
+            jdbc:sqlserver://;servername=localhost;port=1884;databaseName=sputnik;instanceName=WORK_SQL
         </property>
         <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
         <property name="connection.username">admin</property>
