@@ -20,4 +20,17 @@ public class Message {
             return false;
         }
     }
+
+    public static boolean notification(String title, String text, Alert.AlertType type, Stage stage){
+        if (text.length() == 0){
+            return true;
+        }else{
+            Alert alert = new Alert(type);
+            alert.initOwner(stage);
+            alert.setTitle(title);
+            alert.setHeaderText(text);
+            alert.showAndWait();
+            return false;
+        }
+    }
 }
