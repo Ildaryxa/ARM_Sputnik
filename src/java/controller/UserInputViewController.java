@@ -6,14 +6,19 @@ import enumType.FormType;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import message.Message;
 import model.tableUsersEntity;
 import orm.DataBase;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -46,6 +51,9 @@ public class UserInputViewController implements Initializable{
     @FXML CheckBox isAdmin;
     @FXML CheckBox isLocked;
     @FXML DatePicker dataRegistration;
+    @FXML TextField tfLocation;
+    @FXML TextField tfPhoneNumber;
+    @FXML TextField tfEmail;
     @FXML Button btnReg;
     @FXML Pane panelAdmin; //id = #PanelAdmin
 
@@ -55,7 +63,7 @@ public class UserInputViewController implements Initializable{
     public UserInputViewController() {
     }
 
-    void setDialogStage(Stage dialogStage, FormType frmType){
+    public void setDialogStage(Stage dialogStage, FormType frmType){
         stage = dialogStage;
         this.frmType = frmType;
         stage.setOnShown(event -> {
@@ -71,13 +79,14 @@ public class UserInputViewController implements Initializable{
                     panelAdmin.setVisible(false);
                 case UpdateAdmin:
                     btnReg.setText("Изменить");
+                    //loginField.setEditable(false);
                     break;
             }
 
         });
     }
 
-    void setUser(tableUsersEntity user){
+    public void setUser(tableUsersEntity user){
         this.usersEntity = user;
         if (frmType == FormType.Update || frmType == FormType.UpdateAdmin){
             nameField.setText(user.getName());
@@ -89,11 +98,14 @@ public class UserInputViewController implements Initializable{
             isAdmin.selectedProperty().setValue(user.isAdmin());
             isLocked.selectedProperty().setValue(user.isLocked());
             dataRegistration.setValue(user.getDataRegistration().toLocalDateTime().toLocalDate());
+            tfLocation.setText(user.getLocation());
+            tfPhoneNumber.setText(user.getPhoneNumber());
+            tfEmail.setText(user.getEmail());
             loginValid = true;
         }
     }
 
-    boolean isOkClicked(){
+    public boolean isOkClicked(){
         return okClicked;
     }
 
@@ -113,9 +125,13 @@ public class UserInputViewController implements Initializable{
             }
             else
                 usersEntity.setDataRegistration(Timestamp.valueOf(dataRegistration.getValue().atStartOfDay()));
-            usersEntity.setSalt(Salt.generator());
-            usersEntity.setPasswordHash(HashText.getHash(passwordField.getText().trim(), usersEntity.getSalt()));
-
+            String salt = Salt.generator();
+            usersEntity.setSalt(salt);
+            String password = HashText.getHash(passwordField.getText().trim(), salt);
+            usersEntity.setPasswordHash(password);
+            usersEntity.setLocation(tfLocation.getText().trim());
+            usersEntity.setPhoneNumber(tfPhoneNumber.getText().trim());
+            usersEntity.setEmail(tfEmail.getText().trim());
             okClicked = true;
             stage.close();
         }
@@ -125,17 +141,40 @@ public class UserInputViewController implements Initializable{
         String errorMessage = "";
         if (nameField.getText() == null || nameField.getText().length() == 0) {
             errorMessage += "Введите имя!\n";
+        }else if (nameField.getText().length() > 20){
+            errorMessage += "Имя: кол-во символов > 20\n";
         }
         if (surnameField.getText() == null || surnameField.getText().length() == 0) {
             errorMessage += "Введите фамилию!\n";
+        }else if (surnameField.getText().length() > 20){
+            errorMessage += "Фамилия: кол-во символов > 20\n";
         }
         if (loginField.getText() == null || loginField.getText().length() == 0) {
             errorMessage += "Введите логин!\n";
         } else if (!loginValid){
             errorMessage += "Данный логин уже существует!\n";
+        } else if (loginField.getText().length() > 20){
+            errorMessage += "Логин: кол-во символов > 20\n";
         }
         if (passwordField.getText() == null || passwordField.getText().length() == 0) {
             errorMessage += "Введите пароль!\n";
+        }else if (passwordField.getText().length() > 30){
+            errorMessage += "Пароль: кол-во символов > 30\n";
+        }
+        if (tfLocation.getText() == null || tfLocation.getText().length() == 0){
+            errorMessage += "Введите местоположение!\n";
+        } else if (tfLocation.getText().length() > 50){
+            errorMessage += "Местоположение: кол-во символов > 50\n";
+        }
+        if (tfPhoneNumber.getText() == null || tfPhoneNumber.getText().length() == 0){
+            errorMessage += "Введите номер телефона!\n";
+        }else if (tfPhoneNumber.getText().length() > 20){
+            errorMessage += "Номер телефона: кол-во символов > 20\n";
+        }
+        if (tfEmail.getText() == null || tfEmail.getText().length() == 0){
+            errorMessage += "Введите email!\n";
+        }else if (tfEmail.getText().length() > 30){
+            errorMessage += "Email: кол-во символов > 30\n";
         }
         return Message.errorMessage(errorMessage, stage);
     }
