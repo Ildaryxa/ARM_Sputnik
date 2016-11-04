@@ -8,19 +8,23 @@
 <?import javafx.scene.layout.*?>
 
 <?import validate.UserDataField?>
+<?import validate.PriceValid?>
 <?import validate.PasswordValid?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="361.0" prefWidth="389.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserInputViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="389.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserInputViewController">
    <children>
-      <GridPane layoutX="111.0" layoutY="41.0" prefHeight="204.0" prefWidth="480.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
+      <GridPane layoutX="111.0" layoutY="41.0" prefHeight="356.0" prefWidth="389.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="149.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="435.0" minWidth="10.0" prefWidth="331.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="162.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="435.0" minWidth="10.0" prefWidth="227.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="Имя:" GridPane.halignment="RIGHT">
@@ -97,9 +101,48 @@
                   <Insets right="25.0" />
                </GridPane.margin>
             </PasswordValid>
+            <Label text="Местоположение:" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Cambria Bold" size="15.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Номер телефона:" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+               <font>
+                  <Font name="Cambria Bold" size="15.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Email:" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+               <font>
+                  <Font name="Cambria Bold" size="15.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="tfLocation" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="tfPhoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="tfEmail" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </TextField>
          </children>
       </GridPane>
-      <Pane id="PanelAdmin" fx:id="panelAdmin" layoutY="227.0" prefHeight="82.0" prefWidth="480.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Pane id="PanelAdmin" fx:id="panelAdmin" layoutY="364.0" prefHeight="82.0" prefWidth="480.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <CheckBox fx:id="isAdmin" layoutX="23.0" layoutY="14.0" mnemonicParsing="false" text="Права администратора" />
             <CheckBox fx:id="isLocked" layoutX="235.0" layoutY="14.0" mnemonicParsing="false" text="Заблокиррвать" />

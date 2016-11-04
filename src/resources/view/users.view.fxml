@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="1038.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserViewController">
+   <children>
+      <TableView fx:id="tbUsers" layoutX="189.0" layoutY="55.0" prefHeight="405.0" prefWidth="871.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="tbcId" prefWidth="29.0" text="id" />
+          <TableColumn fx:id="tbcName" prefWidth="121.0" text="Имя" />
+            <TableColumn fx:id="tbcSurName" prefWidth="107.0" text="Фамилия" />
+            <TableColumn fx:id="tbcLogin" prefWidth="86.0" text="Логин" />
+            <TableColumn fx:id="tbcIsAdmin" prefWidth="97.0" text="Администратор" />
+            <TableColumn fx:id="tbcLocked" prefWidth="73.0" text="Бан" />
+            <TableColumn fx:id="tbcDataRegistration" prefWidth="73.0" text="Дата регистрации" />
+            <TableColumn fx:id="tbcLocation" prefWidth="133.0" text="Местоположение" />
+            <TableColumn fx:id="tbcPhoneNumber" prefWidth="123.0" text="Номер телефона" />
+            <TableColumn fx:id="tbcEmail" prefWidth="177.0" text="Email" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

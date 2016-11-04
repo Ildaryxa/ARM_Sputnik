@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<?import validate.PriceValid?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="471.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WorkViewController">
+   <children>
+      <TableView fx:id="tbWork" layoutX="14.0" layoutY="48.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+           <TableColumn fx:id="tbcId" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="tbcNameWork" prefWidth="183.0" text="Наименование" />
+          <TableColumn fx:id="tbcPriceWork" minWidth="0.0" prefWidth="191.0" text="Цена" />
+        </columns>
+      </TableView>
+      <TextField fx:id="tfNewWork" layoutX="15.0" layoutY="418.0" prefHeight="31.0" prefWidth="258.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0">
+         <HBox.margin>
+            <Insets right="10.0" />
+         </HBox.margin>
+      </TextField>
+      <PriceValid fx:id="tfNewPrice" layoutX="287.0" layoutY="418.0" prefHeight="31.0" prefWidth="124.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="60.0">
+         <HBox.margin>
+            <Insets right="10.0" />
+         </HBox.margin>
+      </PriceValid>
+      <Button fx:id="btAddWork" layoutX="412.0" layoutY="418.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="35.0" text="+" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+      <Label layoutX="22.0" layoutY="391.0" text="Наименование работы:" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="22.0">
+         <font>
+            <Font name="Cambria" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="287.0" layoutY="391.0" text="Цена (руб.):" AnchorPane.bottomAnchor="53.0" AnchorPane.rightAnchor="104.0">
+         <font>
+            <Font name="Cambria" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

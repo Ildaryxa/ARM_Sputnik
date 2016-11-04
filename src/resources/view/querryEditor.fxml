@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox prefHeight="623.0" prefWidth="679.0" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuerryEditorController">
+
+    <padding>
+        <Insets bottom="10" left="10" right="10" top="10" />
+    </padding>
+   <children>
+   
+   
+       <TabPane fx:id="pane" tabClosingPolicy="UNAVAILABLE">
+           <tabs>
+   
+               <Tab text="Поля">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                               <Label layoutX="6.0" layoutY="4.0" text="Все поля" AnchorPane.leftAnchor="0.0" />
+                               <ListView fx:id="allFields" layoutX="6.0" layoutY="22.0" prefHeight="498.0" prefWidth="292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+                               <Button layoutX="300.0" layoutY="190.0" onAction="#addField" prefHeight="31.0" prefWidth="39.0" text="&gt;" />
+                               <Button layoutX="299.0" layoutY="225.0" onAction="#addAllField" text="&gt;&gt;" />
+                               <Button layoutX="299.0" layoutY="296.0" onAction="#delField" prefHeight="31.0" prefWidth="41.0" text="&lt;" />
+                               <Button layoutX="299.0" layoutY="260.0" onAction="#delAllField" text="&lt;&lt;" />
+                               <Label layoutX="348.0" layoutY="4.0" text="Выбранные поля" />
+                               <ListView fx:id="selectFields" layoutX="349.0" layoutY="21.0" prefHeight="500.0" prefWidth="311.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+               </Tab>
+   
+               <Tab text="Условия">
+                   <content>
+                       <VBox spacing="10">
+                          <children>
+      
+                              <HBox spacing="10">
+         <children>
+         
+                                     <VBox>
+            <children>
+                                            <Label text="Имя поля" />
+                                            <ComboBox fx:id="nameFieldCBox" prefHeight="31.0" prefWidth="187.0" />
+            </children>
+                                     </VBox>
+         
+                                     <HBox fx:id="criteryBox" spacing="10">
+
+                            </HBox>
+         
+                                     <VBox>
+            <children>
+                                            <Label text="Связка" />
+                                            <ComboBox fx:id="relationCBox" prefWidth="100" />
+            </children>
+                                     </VBox>
+         </children>
+      
+                              </HBox>
+      
+                              <TableView fx:id="conditionTable">
+                                  <columns>
+                                      <TableColumn fx:id="nameFieldColumn" text="Имя поля" />
+                                      <TableColumn fx:id="criteryColumn" text="Критерий" />
+                                      <TableColumn fx:id="valueColumn" text="Значение" />
+                                      <TableColumn fx:id="relationColumn" text="Связка" />
+                                  </columns>
+                              </TableView>
+      
+                              <HBox spacing="10">
+      
+                                  <padding>
+                                      <Insets top="10" />
+                                  </padding>
+         <children>
+         
+                                     <Button onAction="#addCondition" text="Добавить" />
+         </children>
+                              </HBox>
+                          </children>
+                       </VBox>
+                   </content>
+               </Tab>
+   
+               <Tab text="Сортировка">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                               <Label layoutX="383.0" layoutY="4.0" text="Все поля" />
+                               <ListView fx:id="selectFieldsUnSort" layoutY="25.0" prefHeight="442.0" prefWidth="304.0" />
+                               <Button layoutX="309.0" layoutY="155.0" onAction="#addFieldSort" prefHeight="31.0" prefWidth="41.0" text="&gt;" />
+                               <Button layoutX="309.0" layoutY="231.0" onAction="#delFieldSort" prefHeight="31.0" prefWidth="41.0" text="&lt;" />
+                               <Label layoutY="4.0" text="Выбранные поля" />
+                               <TableView fx:id="selectFieldsSort" layoutX="356.0" layoutY="25.0" prefHeight="443.0" prefWidth="301.0">
+                                   <columns>
+                                       <TableColumn fx:id="fieldColumn" text="Поле" />
+                                       <TableColumn fx:id="orderColumn" text="Порядок" />
+                                   </columns>
+                               </TableView>
+                               <Label layoutX="294.0" layoutY="485.0" text="Порядок" />
+                               <RadioButton fx:id="ascRBtn" layoutX="375.0" layoutY="485.0" selected="true" text="По возрастанию">
+                                   <toggleGroup>
+                                       <ToggleGroup fx:id="t1" />
+                                   </toggleGroup>
+                               </RadioButton>
+                               <RadioButton fx:id="desRBtn" layoutX="522.0" layoutY="485.0" text="По убыванию" toggleGroup="$t1" />
+                        <Button layoutX="309.0" layoutY="194.0" onAction="#addAllFieldSort" text="&gt;&gt;" />
+                        <Button layoutX="309.0" layoutY="270.0" onAction="#delAllFieldSort" text="&lt;&lt;" />
+                     </children>
+                  </AnchorPane>
+               </content>
+               </Tab>
+   
+               <Tab text="Результат">
+                   <content>
+                       <VBox spacing="10">
+                          <children>
+                              <TableView fx:id="resultTable" prefHeight="522.0" prefWidth="659.0" />
+                          </children>
+                       </VBox>
+                   </content>
+               </Tab>
+   
+           </tabs>
+       </TabPane>
+      <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="659.0">
+         <children>
+         
+         
+             <Button alignment="CENTER" onAction="#execute" text="Выполнить запрос">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#showSql" text="Просмотреть SQL запрос">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#btnCancel" text="Отмена" />
+         </children>
+      </HBox>
+   </children>
+
+</VBox>

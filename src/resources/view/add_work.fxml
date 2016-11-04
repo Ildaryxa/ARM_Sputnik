@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="945.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddWorkViewController">
+   <children>
+      <TableView fx:id="tbWork" layoutX="14.0" layoutY="36.0" prefHeight="200.0" prefWidth="513.0">
+        <columns>
+          <TableColumn fx:id="tbcEmployee" prefWidth="192.0" text="Сотрудник" />
+          <TableColumn fx:id="tbcWork" prefWidth="214.0" text="Выполненная работа" />
+            <TableColumn fx:id="tbcPriceWork" prefWidth="106.0" text="Цена" />
+        </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="14.0" text="Выполненные работы:">
+         <font>
+            <Font name="Cambria" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="543.0" layoutY="14.0" text="Детали:">
+         <font>
+            <Font name="Cambria" size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tbDetail" layoutX="543.0" layoutY="36.0" prefHeight="200.0" prefWidth="391.0">
+        <columns>
+          <TableColumn fx:id="tbcDetail" prefWidth="125.0" text="Деталь" />
+          <TableColumn fx:id="tbcPriceDetail" prefWidth="105.0" text="Цена" />
+            <TableColumn fx:id="tbcCount" prefWidth="92.0" text="Кол-во" />
+            <TableColumn fx:id="tbcUnit" prefWidth="68.0" text="Ед.из." />
+        </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="246.0" text="Добавление работы и деталей:">
+         <font>
+            <Font name="Cambria" size="20.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="14.0" layoutY="268.0" prefHeight="60.0" prefWidth="513.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Сотрудник:">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Label>
+            <Label text="Выполненная работа:" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cmbEmployee" prefHeight="31.0" prefWidth="262.0" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox fx:id="cmbWork" prefHeight="31.0" prefWidth="260.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </ComboBox>
+         </children>
+      </GridPane>
+      <GridPane layoutX="543.0" layoutY="270.0" prefHeight="60.0" prefWidth="391.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="250.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="89.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="68.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Новая деталь:">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Label>
+            <Label text="Кол-во:" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cmbDetail" prefHeight="31.0" prefWidth="260.0" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox fx:id="cmbCount" prefHeight="31.0" prefWidth="260.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <Button fx:id="btnAdd" mnemonicParsing="false" prefHeight="31.0" prefWidth="46.0" text="+" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <GridPane layoutX="14.0" layoutY="345.0" prefHeight="120.0" prefWidth="237.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Статус автомобиля:">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Label>
+            <Label text="Статус оплаты:" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cmbStatusCar" prefHeight="31.0" prefWidth="242.0" GridPane.rowIndex="1" />
+            <ComboBox fx:id="cmbStatusPay" prefHeight="31.0" prefWidth="241.0" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <Button fx:id="btnCancel" layoutX="858.0" layoutY="434.0" mnemonicParsing="false" text="Отмена" />
+      <Button fx:id="btnAccept" layoutX="761.0" layoutY="434.0" mnemonicParsing="false" text="Принять" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="1328.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeViewController">
+    <children>
+        <TableView fx:id="tbEmployee" layoutX="14.0" layoutY="48.0" prefHeight="551.0" prefWidth="1328.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columns>
+                <TableColumn fx:id="tbcId" prefWidth="55.0" text="ID" />
+                <TableColumn fx:id="tbcName" prefWidth="126.0" text="Имя" />
+                <TableColumn fx:id="tbcSurname" minWidth="0.0" prefWidth="150.0" text="Фамилия" />
+                <TableColumn fx:id="tbcFirstname" prefWidth="142.0" text="Отчество" />
+            <TableColumn fx:id="tbcQualification" prefWidth="117.0" text="Квалификация" />
+            <TableColumn fx:id="tbcPhoneNumber" prefWidth="104.0" text="Номер телефона" />
+            <TableColumn fx:id="tbcLocation" prefWidth="96.0" text="Адрес проживания" />
+            <TableColumn fx:id="tbcStatus" prefWidth="85.0" text="Статус" />
+            <TableColumn fx:id="tbcPasportSeries" prefWidth="127.0" text="Серия паспорта" />
+            <TableColumn fx:id="tbcPasportNumber" prefWidth="170.0" text="Номер паспорта" />
+            <TableColumn fx:id="tbcPasportRegistration" prefWidth="155.0" text="Регистрация" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
