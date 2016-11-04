@@ -8,6 +8,6 @@ import java.security.SecureRandom;
  */
 public class Salt {
     public static String generator(){
-        return new BigInteger(100, new SecureRandom()).toString();
+        return new BigInteger(99, new SecureRandom()).toString();
     }
 }
